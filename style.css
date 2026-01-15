@@ -223,17 +223,44 @@ h1{
     font-family: "Creepster", system-ui;
     font-size: 70px;
 }
-#tema-dark{
+.div-tema{
     position: absolute;
-    top: 10%;
-    left: 95%;
-    color: red;
+    top: 5%;
+    left: 88%;
+    width: 60px;
+    height: 60px;
+    color: #fdfdfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    gap: 5px;
     font-size: 30px;
 }
-#tema-light{
-    position: absolute;
-    top: 10%;
-    right: 95%;
-    color: #1b01bc;
-    font-size: 30px;
+.div-tema:hover{
+    color: #575048;
+}
+.modos i{
+    font-size: 20px;
+    color: #a5a5a58d;
+}
+.modos span{
+    color: #d3d3d3;
+    font-size: 16px;
+}
+.modos{
+    width:130px;
+    height:30px;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap: 10px;
+}
+.modos:hover{
+    background-color: #72727265;
+}
+#seta{
+    font-size: 20px;
 }
