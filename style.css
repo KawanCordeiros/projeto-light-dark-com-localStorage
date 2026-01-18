@@ -6,9 +6,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DynaPuff:wght@400..700&family=Permanent+Marker&family=Shadows+Into+Light&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=DynaPuff:wght@400..700&family=Lovers+Quarrel&family=Permanent+Marker&family=Shadows+Into+Light&display=swap');
+
 :root{
     --transparente: transparent 25%;
     --cinza: #1b1e22;
+    --cinza-reverso: #a4fead;
     --branco-cinzentado: #d3d3d3;
     --cinza-transparente: #d8d8d81d;
     --branco: #ffffff;
@@ -23,11 +26,21 @@
     --cor-butao: #c2c2c2;
     --sombra-botao-2: #1b01bc;
     --sombra-botao-1: #000000;
+    --cor-elementos: #e4ebf0;
+    --cor-elementos-passa: #e36767;
+    --icone: #d4cfa5;
+    --letra-icone: #ff7e57;
+    --fundo-mouse: #72727265;
+    --fundo-selecionado: #000;
+    --letra-selecionado: #ff0000;
+    --fundo-geral: #242424;
+    --borda-geral: #e6e1cd;
 }
 
 body.light-mode {
     --transparente: transparent 100%;
     --cinza: #a4fead;
+    --cinza-reverso: #1b1e22;
     --cinza-2: #effbd0;
     --branco-cinzentado: #e6dd37;
     --cinza-transparente: #000000a9;
@@ -42,6 +55,15 @@ body.light-mode {
     --cor-butao: #140000;
     --sombra-botao-2: #006e00;
     --sombra-botao-1: #9a8657;
+    --cor-elementos: #6a6a6a;
+    --cor-elementos-passa: #fcae11;
+    --icone: #8cbfe6;
+    --letra-icone: #f0ffc2;
+    --fundo-mouse: #b3cc5732;
+    --fundo-selecionado: #2d2d29;
+    --letra-selecionado: #ffa739;
+    --fundo-geral: #496940;
+    --borda-geral: #fce07f;
 }
 
 *{
@@ -229,7 +251,6 @@ h1{
     left: 88%;
     width: 60px;
     height: 60px;
-    color: #fdfdfd;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,17 +258,29 @@ h1{
     cursor: pointer;
     gap: 5px;
     font-size: 30px;
+    transition: color .2s ease;
+    opacity: 1;
 }
-.div-tema:hover{
-    color: #575048;
+.div-tema * {
+    color: var(--cor-elementos);
+    transition: color .2s ease;
+}
+
+.div-tema:hover * {
+    color: var(--cor-elementos-passa);
+    transition: color .2s ease;
 }
 .modos i{
     font-size: 20px;
-    color: #a5a5a58d;
+    color: var(--icone);
+
 }
 .modos span{
-    color: #d3d3d3;
-    font-size: 16px;
+    color: var(--letra-icone);
+    font-size: 25px;
+    font-family: "Lovers Quarrel", cursive;
+    font-weight: 500;
+    font-style: normal;
 }
 .modos{
     width:130px;
@@ -257,10 +290,88 @@ h1{
     align-items:center;
     justify-content: center;
     gap: 10px;
+    cursor: pointer;
 }
 .modos:hover{
-    background-color: #72727265;
+    background-color: var(--fundo-mouse);
 }
 #seta{
     font-size: 20px;
+    transform: rotate(-90deg);
+    transition: .5s ease-in-out;
 }
+#seta.roda{
+    transform: rotate(0deg);
+}
+
+.modos.ativo{
+    background-color: var(--fundo-selecionado);
+}
+.modos.ativo *{
+    background-color: var(--fundo-selecionado);
+    color: var(--letra-selecionado);
+}
+.icons{
+    transform: rotate(0deg);
+    transition:.5s ease-in-out;
+}
+.icons.roda{
+    transform:rotate(720deg);
+    transition:.5s ease-in-out;
+}
+.menu-mode{
+    background-color: var(--fundo-geral);
+    width:140px;
+    height:100px;
+    position:absolute;
+    top: 15%;   
+    left: 85%;
+    border-radius:10px;
+    border:2px solid var(--borda-geral);
+    gap:1.5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    transition: 1s ease-out;
+}
+
+.transicao {
+    position: absolute;
+
+    border-radius: 50%;
+    opacity: 0;
+
+    transition:
+        transform 0.5s linear,
+        opacity 1s ease;
+}
+
+.transicao.light-transicao {
+    top: 10vh;
+    left: 88vw;
+    opacity: 1;
+    z-index: 1;
+    animation: vai-volta 1s linear;
+}
+.transicao.dark-transicao {
+    top: 10vh;
+    left: 88vw;
+    opacity: 1;
+    z-index: 1;
+    animation: vai-volta 1s linear;
+}
+
+
+@keyframes vai-volta{
+    0%{
+        transform: scale(150);
+        border: 10px solid var(--cinza-reverso);
+    }
+    100%{
+        transform: scale(0);
+        border: 10px solid var(--cinza);
+    }
+
+}
+
